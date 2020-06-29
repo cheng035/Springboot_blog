@@ -2,6 +2,7 @@ package com.hogan.hogan_blog.dto;
 
 public class LoginRequest {
     private String username;
+    private String password;
 
     public String getUsername() {
         return username;
@@ -19,6 +20,6 @@ public class LoginRequest {
         this.password = password;
     }
 
-    private String password;
+
 
 }
