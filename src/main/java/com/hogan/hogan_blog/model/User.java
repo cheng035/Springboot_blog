@@ -6,6 +6,17 @@ import javax.persistence.*;
 @Table
 
 public class User{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column
+    private String userName;
+    @Column
+    private String password;
+    @Column
+    private String email;
+
+
     public Long getId() {
         return id;
     }
@@ -15,11 +26,11 @@ public class User{
     }
 
     public String getUserName() {
-        return UserName;
+        return userName;
     }
 
     public void setUserName(String userName) {
-        UserName = userName;
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -38,15 +49,7 @@ public class User{
         this.email = email;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column
-    private String UserName;
-    @Column
-    private String password;
-    @Column
-    private String email;
+
 
 
 }

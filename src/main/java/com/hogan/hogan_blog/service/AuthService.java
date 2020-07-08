@@ -25,9 +25,9 @@ public class AuthService {
     private JwtProvider jwtProvider;
     public void signup(RegisterRequest registerRequest){
         User user=new User();
-        user.setUserName(registerRequest.getUsername());
-        user.setPassword(registerRequest.getPassword());
-        user.setEmail(encodePassword(registerRequest.getEmail()));
+        user.setUserName(registerRequest.getUserName());
+        user.setEmail(registerRequest.getEmail());
+        user.setPassword(encodePassword(registerRequest.getPassword()));
         userRepository.save(user);
     }
 
@@ -36,8 +36,11 @@ public class AuthService {
     }
 
     public String login(LoginRequest loginRequest) {
-        Authentication authenticate=authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),
+
+        Authentication authenticate=authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUserName(),
                 loginRequest.getPassword()));
+
+        System.out.println(authenticate.getDetails());
 
         SecurityContextHolder.getContext().setAuthentication(authenticate);
         return jwtProvider.generateToken(authenticate);

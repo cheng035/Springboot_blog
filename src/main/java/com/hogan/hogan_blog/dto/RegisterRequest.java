@@ -1,14 +1,14 @@
 package com.hogan.hogan_blog.dto;
 
 public class RegisterRequest {
-    private String username;
+    private String userName;
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {

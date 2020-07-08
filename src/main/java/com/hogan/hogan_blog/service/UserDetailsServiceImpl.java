@@ -14,22 +14,18 @@ import java.util.Collection;
 import java.util.Collections;
 
 
-@Service
+@Service  //implement userDetail service interface
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
-
-
-
-
     private Collection<? extends GrantedAuthority> getAuthorities(String role_user) {
         return Collections.singletonList(new SimpleGrantedAuthority(role_user));
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUserName(username).orElseThrow(()->
-                new UsernameNotFoundException("no User found"+username));
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+        User user = userRepository.findByUserName(userName).orElseThrow(()->
+                new UsernameNotFoundException("no User found"+userName));
         return new org.springframework.security.core.userdetails.User(user.getUserName(),user.getPassword(),true,true,true,
                 true,getAuthorities("ROLE_USER"));
     }
