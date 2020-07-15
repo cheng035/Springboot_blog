@@ -11,6 +11,38 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
+    @Column
+    private String title;
+
+    @Lob //speicifies that a persistent property or field should be persisted as a large object to a database-supported object type
+    @Column
+    @NotEmpty
+    private String content;
+
+    @Column
+    private Instant createdOn;
+
+    @Column
+    private Instant updateOn;
+
+    @Column
+    @NotBlank
+    private String userName;
+
+    public Instant getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(Instant createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+
 
     public Long getId() {
         return id;
@@ -36,13 +68,7 @@ public class Post {
         this.content = content;
     }
 
-    public Instant getCreatOn() {
-        return creatOn;
-    }
 
-    public void setCreatOn(Instant creatOn) {
-        this.creatOn = creatOn;
-    }
 
     public Instant getUpdateOn() {
         return updateOn;
@@ -56,27 +82,8 @@ public class Post {
         return userName;
     }
 
-    public void setUsername(String username) {
-        this.userName = userName;
-    }
 
-    @NotBlank
-    @Column
-    private String title;
 
-    @Lob //speicifies that a persistent property or field should be persisted as a large object to a database-supported object type
-    @Column
-    @NotEmpty
-    private String content;
-
-    @Column
-    private Instant creatOn;
-    @Column
-    private Instant updateOn;
-
-    @Column
-    @NotBlank
-    private String userName;
 
 
 
